@@ -77,7 +77,7 @@ public class userController {
         String newPwd = params.get("new_pwd");
         String rePwd = params.get("re_pwd");
 
-        if (oldPwd == null || newPwd == null || rePwd == null || !(oldPwd.length() > 0) || !(newPwd.length() > 0) || !(rePwd.length() > 0))
+        if (oldPwd.isEmpty() || newPwd.isEmpty() || rePwd.isEmpty())
             return Result.error("输入内容不能为空！");
 
         if (!newPwd.equals(rePwd))
