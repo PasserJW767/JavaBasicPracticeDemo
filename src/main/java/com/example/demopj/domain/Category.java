@@ -22,7 +22,7 @@ public class Category {
     @NotEmpty(groups = {Add.class, Update.class})
     private String categoryAlias;
     @JsonIgnore
-    private int createUser;
+    private Integer createUser;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
