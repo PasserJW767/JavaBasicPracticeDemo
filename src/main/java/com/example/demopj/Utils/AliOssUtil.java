@@ -9,6 +9,8 @@ import java.io.InputStream;
 
 public class AliOssUtil {
     private static final String ENDPOINT = "https://oss-cn-shenzhen.aliyuncs.com";
+    private static final String ACCESS_KEY_ID = "";
+    private static final String SECRET_ACCESS_KEY = "";
     private static final String BUCKET_NAME = "an-test-bucket";
 
     //上传文件,返回文件的公网访问地址

@@ -17,6 +17,8 @@ public class AliOSSTest {
         String endpoint = "https://oss-cn-shenzhen.aliyuncs.com";
         // 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量OSS_ACCESS_KEY_ID和OSS_ACCESS_KEY_SECRET。
 //        EnvironmentVariableCredentialsProvider credentialsProvider = CredentialsProviderFactory.newEnvironmentVariableCredentialsProvider();
+        String ACCESS_KEY_ID = "";
+        String ACCESS_KEY_SECRET = "";
         // 填写Bucket名称，例如examplebucket。
         String bucketName = "an-test-bucket";
         // 填写Object完整路径，例如exampledir/exampleobject.txt。Object完整路径中不能包含Bucket名称。
