@@ -8,6 +8,8 @@ import com.example.demopj.service.UserService;
 import com.example.demopj.type.Result;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,7 @@ import javax.swing.text.html.Option;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 @RestController
@@ -23,7 +26,10 @@ import java.util.function.Consumer;
 public class userController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     @PostMapping("/register")
     public Result<String> register(@Pattern(regexp = "^\\S{5,16}$") String username, @Pattern(regexp = "^\\S{5,16}$") String password){
@@ -45,6 +51,10 @@ public class userController {
             claims.put("id", user.getId());
             claims.put("username", user.getUsername());
             String jwtData = JwtUtil.genToken(claims);
+//            令牌存储到redis中
+            ValueOperations<String, String> stringStringValueOperations = stringRedisTemplate.opsForValue();
+//            Redis令牌过期时间和JwtUtil中保持一致
+            stringStringValueOperations.set(user.getUsername(), jwtData, 12, TimeUnit.HOURS);
             return Result.success(jwtData);
         } else {
             return Result.error("密码错误");
@@ -90,6 +100,10 @@ public class userController {
             return Result.error("原密码输入错误");
 
         userService.updatePassword(newPwd, user.getId());
+//        删除Redis中对应的token
+        ValueOperations<String, String> stringStringValueOperations = stringRedisTemplate.opsForValue();
+        stringStringValueOperations.getOperations().delete(user.getUsername());
+
         return Result.success();
     }
 
