@@ -1,0 +1,3 @@
+# ???????=????????? ctrl+alt+????
+#org.springframework.context.ApplicationContextInitializer=com.example.demopj.aboutInterview.contextInitializer.MyApplicationContextInitializer
+#org.springframework.context.ApplicationListener=com.example.demopj.aboutInterview.listener.MyListener
