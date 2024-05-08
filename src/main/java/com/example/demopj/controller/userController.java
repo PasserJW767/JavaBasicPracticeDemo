@@ -21,6 +21,7 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
+@Validated
 @RestController
 @RequestMapping("/user")
 public class userController {
