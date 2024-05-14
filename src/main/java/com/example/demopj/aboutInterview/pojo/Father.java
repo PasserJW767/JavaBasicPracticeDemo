@@ -25,11 +25,11 @@ public class Father implements InitializingBean, DisposableBean {
 
     @Override
     public void destroy() throws Exception {
-        System.out.println("InitializingBean...destroy...执行了...");
+        System.out.println("DisposableBean...destroy...执行了...");
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("DisposableBean...afterPropertiesSet...执行了...");
+        System.out.println("InitializingBean...afterPropertiesSet...执行了...");
     }
 }
