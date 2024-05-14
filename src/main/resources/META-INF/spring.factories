@@ -1,5 +1,10 @@
-# ???????=????????? ctrl+alt+????
-#org.springframework.context.ApplicationContextInitializer=com.example.demopj.aboutInterview.contextInitializer.MyApplicationContextInitializer
-#org.springframework.context.ApplicationListener=\
-#  com.example.demopj.aboutInterview.listener.business.SmsListener,\
-#  com.example.demopj.aboutInterview.listener.business.WechatListener
+# ctrl+alt+[space] -> tips
+org.springframework.context.ApplicationContextInitializer=\
+  com.example.demopj.aboutInterview.contextInitializer.MyApplicationContextInitializer
+
+org.springframework.context.ApplicationListener=\
+  com.example.demopj.aboutInterview.listener.business.SmsListener,\
+  com.example.demopj.aboutInterview.listener.business.WechatListener
+
+#org.springframework.beans.factory.config.BeanFactoryPostProcessor=\
+#  com.example.demopj.aboutInterview.processor.MyBeanFactory

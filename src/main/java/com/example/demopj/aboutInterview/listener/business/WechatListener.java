@@ -3,7 +3,7 @@ package com.example.demopj.aboutInterview.listener.business;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class WechatListener implements ApplicationListener<OrderCreateEvent> {
     @Override
     public void onApplicationEvent(OrderCreateEvent event) {
